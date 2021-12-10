@@ -42,6 +42,8 @@ Run tests
 npm run test
 ```
 
+## Resources
+- Favicons: https://favicon.io/emoji-favicons/timer-clock/
 ## Components
 ```javascript
 // In this example, we show how components can be defined and created.
