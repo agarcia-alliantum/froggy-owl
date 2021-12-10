@@ -13,6 +13,7 @@ module.exports = {
         turquoise: "#74d5de",
         "reddish-brown": "#ed6e58",
         "faded-green": "#deebec",
+        "faded-blue": "#deeceb",
       },
     },
   },

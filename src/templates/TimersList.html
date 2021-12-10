@@ -3,43 +3,51 @@
         <thead>
             <tr>
                 <th></th>
-                <th>Type</th>
                 <th>Name</th>
-                <th>First timer</th>
-                <th>Second timer</th>
-                <th>Total</th>
+                <th>Counters</th>
+                <th class="text-right">Total</th>
                 <th class="text-center">Tools</th>
             </tr>
         </thead>
         <tbody>
-        <tr t-foreach="searchResults()" t-as="searchResult"
-            t-on-click.prevent="handleClick(searchResult)"
+        <tr t-foreach="getTimers()" t-as="timer"
+            t-on-click.prevent="handleClick(timer)"
             class="px-3 py-2 cursor-pointer hover:bg-gray-200">
-            <td>
+            <td class="current">
                 <div class="flex gap-1 items-center">
-                    <Icon t-if="searchResult.current" icon="'play'" class="h-5 w-5 text-green-400"/>
+                    <Icon t-if="timer.current" icon="'play'" class="h-5 w-5 text-green-400"/>
                 </div>
             </td>
-            <td>
-                <div class="flex gap-1 items-center">
+            <td class="name"><span t-esc="timer.name"></span></td>
+            <td class="counters">
+                <div class="flex gap-1 items-center font-mono">
                     <Icon icon="'clock'" class="h-5 w-5"/>
-                    <Icon icon="searchResult.type" class="h-5 w-5"/>
+                    <t t-foreach="timer.counters" t-as="counter" t-key="counter.id">
+                        <span class="flex">
+                        <Icon icon="counter.type" class="h-4 w-4"/>
+                        <small t-esc="counter.total.toString().padStart(2,'0')">00</small>
+                        </span>
+                    </t>
                 </div>
             </td>
-            <td><span t-esc="searchResult.name"></span></td>
-            <td><span t-esc="searchResult.t1"></span></td>
-            <td><span t-esc="searchResult.t2"></span></td>
-            <td class="text-right"><span t-esc="searchResult.totalString()"></span></td>
-            <td class="text-center"><Icon icon="'trash'" class="h-5 w-5 mx-auto"/></td>
+            <td class="total text-right">
+                <span class="font-mono" t-esc="timer.totalMinutes()">00</span>
+            </td>
+            <td class="tools text-center"><Icon icon="'trash'" class="h-5 w-5 mx-auto"/></td>
         </tr>
         </tbody>
-        <tbody t-if="!searchResults().length" class="px-3 py-2 text-center">
+        <tbody t-if="!getTimers().length" class="px-3 py-2 text-center">
           <tr><td colspan="100%">No Matching Results</td></tr>
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="5" class="text-right">TOTAL</td>
-                <td class="text-right"><span t-esc="totalString()"></span></td>
+                <td colspan="3" class="text-right pr-1">TOTAL</td>
+                <td class="text-right font-mono"><span t-esc="totalString()">00:00</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-right pr-1">REMAIN</td>
+                <td class="text-right font-mono"><span t-esc="totalString()">00:00</span></td>
                 <td></td>
             </tr>
         </tfoot>

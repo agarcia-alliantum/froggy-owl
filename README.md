@@ -5,7 +5,6 @@ This project is an example on how to start a JavaScript project with the Odoo OW
 Thanks to @SimonGenin for it's [original Starter Project for OWL](https://github.com/SimonGenin/OWL-JavaScript-Project-Starter)
 Thanks to [Coding-Dod](https://github.com/Coding-Dodo/OWL-JavaScript-Tailwind-Project-Starter.git)
 
-
 ## Features
 
 - [OWL](https://github.com/odoo/owl)
@@ -15,6 +14,7 @@ Thanks to [Coding-Dod](https://github.com/Coding-Dodo/OWL-JavaScript-Tailwind-Pr
 - Rollup.js
 - Tailwind and PostCSS
 - Tests with Jest
+- Sourcemaps
 
 ## Installation
 
@@ -43,7 +43,9 @@ npm run test
 ```
 
 ## Resources
+- https://www.odoo.com/documentation/15.0/developer/reference/frontend/owl_components.html
 - Favicons: https://favicon.io/emoji-favicons/timer-clock/
+
 ## Components
 ```javascript
 // In this example, we show how components can be defined and created.

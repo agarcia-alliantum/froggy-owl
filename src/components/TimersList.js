@@ -14,7 +14,7 @@ export class TimersList extends Component {
     }
     state = useState({})
 
-    searchResults() {
+    getTimers() {
         return this.props.timers;
     }
 

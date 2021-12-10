@@ -10,5 +10,4 @@ export class CurrentTimer extends Component {
             optional: true,
         },
     }
-    state = useState({})
 }

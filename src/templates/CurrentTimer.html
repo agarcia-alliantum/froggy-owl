@@ -1,6 +1,10 @@
 <section>
-    <h1>CurrentTimer</h1>
-    <span t-if="props.selectedTimer">
-        <span t-esc="props.selectedTimer.name"></span>
+    <span t-if="props.selectedTimer" class="flex gap-2">
+        <div t-esc="props.selectedTimer.name"></div>
+        <div t-esc="props.selectedTimer.totalString()"></div>
+        <div t-esc="props.selectedTimer.totalMinutes()"></div>
     </span>
+    <div class="timer flex flex-row text-6xl">
+        <div t-esc="props.selectedTimer.counters[props.selectedTimer.counter_index].totalString()"></div>
+    </div>
 </section>

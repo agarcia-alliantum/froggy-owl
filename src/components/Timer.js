@@ -1,36 +1,23 @@
+import { Counter } from "./counter";
 export class Timer {
     constructor(opt) {
-      this.name = opt.name
-      this.type = opt.type
-      this.current = opt.current
-      this.t1 = opt.t1
-      this.t2 = opt.t2
-      let a = this.t1.split(':')
-      this.h1 = parseInt(a[0]);
-      this.m1 = parseInt(a[1]);
-      a = this.t2.split(':')
-      this.h2 = parseInt(a[0]);
-      this.m2 = parseInt(a[1]);
-      console.log('HOURS', this.h1)
-      console.log('HOURS', this.m1)
-    }
-
-    total() {
-        return this.h1 + this.m1;
+        //console.log('NEW TIMER')
+        this.name = opt.name
+        this.types = opt.types
+        this.current = opt.current
+        this.timers = opt.timers
+        this.counters = this.timers.map((c, i) => new Counter(this, i, this.types[i], c))
+        this.counter_index = 0
     }
 
     totalMinutes() {
-        let h = (this.h1 + this.h2) * 60
-        let m = this.m1 + this.m2
-        return h+m
+        return this.counters.reduce((a,b) => a + b.total, 0)
     }
 
     totalString() {
         let t = this.totalMinutes()
-        let h = parseInt(t/60).toString()
-        let m = (t%60).toString()
-        if(h.length<2) h = '0'+h
-        if(m.length<2) m = '0'+m
+        let h = parseInt(t/60).toString().padStart(2,'0')
+        let m = (t%60).toString().padStart(2,'0')
         return `${h}:${m}`
     }
 }
