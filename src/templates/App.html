@@ -1,0 +1,23 @@
+<main class="h-full pb-14 bg-faded-green" t-name="App">
+    <header>
+        <h1 class="text-turquoise">Multi Timer</h1>
+    </header>
+    <div class="container pt-3 md:pt-5 px-6 mx-auto flex h-screen flex-wrap flex-col md:flex-row">
+        <section class="currentTimer w-full md:w-3/5">
+            <header>
+                <h2>Current</h2>
+                <CurrentTimer selectedTimer="state.selectedTimer"/>
+            </header>
+        </section>
+        <section class="timersList w-full md:w-2/5">
+            <header>
+                <h2>Timers List</h2>
+            </header>
+            <TimersList
+                timers="state.timers"
+                t-on-chosen="onTimerChosen"
+                t-on-newTimer="onNewTimer"
+                />
+        </section>
+    </div>
+</main>
